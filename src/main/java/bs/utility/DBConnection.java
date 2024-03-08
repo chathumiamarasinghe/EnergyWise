@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
     
-  private static String url="jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL"; 
+  private static String url="jdbc:mysql://localhost:3306/EnergyWise?zeroDateTimeBehavior=CONVERT_TO_NULL"; 
   private static String user="root";
   private static String password="2001chathu";
   

@@ -10,20 +10,16 @@ public class Customer {
     private static String first_name;
     private static String last_name;
     private static String email;
-    private static String tel_no;
-    private static String username;
     private static String password;
     private static boolean is_active;
     private static LocalDateTime registration_date;
     
-    public Customer(String customer_id,String first_name,String last_name,String email,String tel_no,String username,String password,boolean is_active,LocalDateTime registration_date){
+    public Customer(String customer_id,String first_name,String last_name,String email,String password,boolean is_active,LocalDateTime registration_date){
     
         this.customer_id=customer_id;
         this.first_name=first_name;
         this.last_name=last_name;
         this.email=email;
-        this.tel_no=tel_no;
-        this.username=username;
         this.password=password;
         this.is_active=is_active;
         this.registration_date=registration_date;
@@ -61,21 +57,7 @@ public class Customer {
         Customer.email = email;
     }
 
-    public static String getTel_no() {
-        return tel_no;
-    }
-
-    public static void setTel_no(String tel_no) {
-        Customer.tel_no = tel_no;
-    }
-
-    public static String getUsername() {
-        return username;
-    }
-
-    public static void setUsername(String username) {
-        Customer.username = username;
-    }
+    
 
     public static String getPassword() {
         return password;
@@ -100,6 +82,9 @@ public class Customer {
     public static void setRegistration_date(LocalDateTime registration_date) {
         Customer.registration_date = registration_date;
     }
+
+    public Customer() {
+     }
     
     public String toString() {
         return "Customer{" +
@@ -107,8 +92,6 @@ public class Customer {
             ", firstName='" + first_name + '\'' +
             ", lastName='" + last_name + '\'' +
             ", email='" + email + '\'' +
-            ", telNo='" + tel_no + '\'' +
-            ", userName='" + username + '\'' +
             ", password='" + password + '\'' +
             ", isActive=" + is_active +
             ", registrationDate=" + registration_date +
