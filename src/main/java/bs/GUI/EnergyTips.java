@@ -5,6 +5,11 @@
 package main.java.bs.GUI;
 
 import javax.swing.JOptionPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -161,28 +166,54 @@ energyTipLabel.setEditable(false);
             + "Landscaping: Plant shade trees around your home to reduce solar heat gain during the summer, lowering the demand for air conditioning.\n"
             + "Energy Monitoring: Use energy monitoring devices to track electricity usage in real-time and identify opportunities for conservation.";
 } else if (unitUsage >= 500 && unitUsage < 1000) {
-    energyTip = "Energy Tip for Medium Usage: Turn off lights and appliances when not in use.\n"
-            + "Solar Panels: Consider installing solar panels to harness renewable energy and offset a portion of your electricity consumption, reducing monthly bills.\n"
-            + "Insulation Upgrade: Enhance insulation in the attic, walls, and basement to maintain comfortable indoor temperatures and reduce heating and cooling costs.\n"
-            + "Energy-Efficient Windows: Upgrade to double-pane or energy-efficient windows to minimize heat transfer and improve overall energy efficiency.\n"
-            + "Smart Power Management: Invest in smart power strips or outlets that automatically power off electronics when not in use or on a schedule.\n"
-            + "Water Heater Timer: Install a timer on your water heater to schedule heating cycles during off-peak hours, saving energy and reducing utility costs.\n"
-            + "Landscaping: Plant shade trees around your home to reduce solar heat gain during the summer, lowering the demand for air conditioning.\n"
-            + "Energy Monitoring: Use energy monitoring devices to track electricity usage in real-time and identify opportunities for conservation.";
+    energyTip = "Energy Tip for Medium Usage: Optimize energy usage during peak hours.\n" +
+        "Adjust thermostat settings to conserve energy.\n" +
+        "Upgrade to high-efficiency appliances.\n" +
+        "Utilize natural lighting whenever possible.\n" +
+        "Incorporate energy-saving features into landscaping.\n" +
+        "Seal air leaks in windows, doors, and ductwork.\n" +
+        "Use ceiling fans to improve airflow and reduce the need for air conditioning.\n" +
+        "Install programmable thermostats to regulate temperature settings efficiently.";
 } else {
-    energyTip = "Energy Tip for High Usage: Turn off lights and appliances when not in use.\n"
-            + "Solar Panels: Consider installing solar panels to harness renewable energy and offset a portion of your electricity consumption, reducing monthly bills.\n"
-            + "Insulation Upgrade: Enhance insulation in the attic, walls, and basement to maintain comfortable indoor temperatures and reduce heating and cooling costs.\n"
-            + "Energy-Efficient Windows: Upgrade to double-pane or energy-efficient windows to minimize heat transfer and improve overall energy efficiency.\n"
-            + "Smart Power Management: Invest in smart power strips or outlets that automatically power off electronics when not in use or on a schedule.\n"
-            + "Water Heater Timer: Install a timer on your water heater to schedule heating cycles during off-peak hours, saving energy and reducing utility costs.\n"
-            + "Landscaping: Plant shade trees around your home to reduce solar heat gain during the summer, lowering the demand for air conditioning.\n"
-            + "Energy Monitoring: Use energy monitoring devices to track electricity usage in real-time and identify opportunities for conservation.";
+    energyTip = "Energy Tip for High Usage: Conduct a comprehensive energy audit to identify areas of high consumption.\n" +
+        "Consider advanced energy-saving technologies such as home automation systems.\n" +
+        "Explore alternative energy sources like wind or geothermal power.\n" +
+        "Engage in community energy-saving initiatives.\n" +
+        "Educate family members or residents on energy-saving practices.\n" +
+        "Seek professional advice for tailored energy-saving solutions.\n" +
+        "Monitor and reduce standby power consumption by unplugging devices when not in use.\n" +
+        "Opt for energy-efficient appliances with the ENERGY STAR label.";
 }
 
             // Set the text of the energyTipLabel to display the energy tip
             energyTipLabel.setText(energyTip);
 
+            energyTipLabel.setText("");
+
+        // Get the styled document
+        StyledDocument doc = energyTipLabel.getStyledDocument();
+
+        // Create a simple attribute set for the default text style
+        AttributeSet defaultStyle = doc.getStyle(StyleContext.DEFAULT_STYLE);
+
+        // Create a simple attribute set for bold text
+        SimpleAttributeSet boldStyle = new SimpleAttributeSet();
+        StyleConstants.setBold(boldStyle, true);
+
+        // Create a simple attribute set for regular text
+        SimpleAttributeSet regularStyle = new SimpleAttributeSet();
+        StyleConstants.setBold(regularStyle, false);
+
+        // Append each line of the energy tip with appropriate style
+        for (String line : energyTip.split("\n")) {
+            // Check if the line starts with "Energy Tip"
+            if (line.startsWith("Energy Tip")) {
+                doc.insertString(doc.getLength(), line + "\n", boldStyle);
+            } else {
+                doc.insertString(doc.getLength(), line + "\n", regularStyle);
+            }
+        }
+            
         } catch (NumberFormatException e) {
             // Handle the case where the user enters a non-numeric value
             energyTipLabel.setText("Please enter a valid number for unit usage.");
@@ -199,7 +230,7 @@ energyTipLabel.setEditable(false);
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        AfterLogin AfterLoginFrame=new AfterLogin();
+        Dashboard AfterLoginFrame=new Dashboard();
         AfterLoginFrame.setVisible(true);
         AfterLoginFrame.pack();
         AfterLoginFrame.setLocationRelativeTo(null);

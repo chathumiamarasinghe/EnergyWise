@@ -273,7 +273,7 @@ public class Login extends javax.swing.JFrame {
             if(rs.next()){
                 
                 JOptionPane.showMessageDialog(this, "Your login is successful.Let's save energy!");
-                AfterLogin cushpal = new AfterLogin();
+                Dashboard cushpal = new Dashboard();
                 cushpal.setVisible(true);
                 this.dispose();
                 
