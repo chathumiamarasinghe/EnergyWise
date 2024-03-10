@@ -1,6 +1,7 @@
 
 package main.java.bs.GUI;
 
+import javax.swing.JOptionPane;
 import main.java.bs.controller.CustomerController;
 
 
@@ -9,6 +10,7 @@ public class SignUp extends javax.swing.JFrame {
     
     public SignUp() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
    
@@ -225,6 +227,18 @@ CustomerController controller = new CustomerController();
         String email = jTextField2.getText();
         String password = new String(jPasswordField1.getPassword());
         controller.addCustomer(fname, lname, email, password);
+        
+    if (!fname.isEmpty() && !lname.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+        // Display success message and clear fields
+        JOptionPane.showMessageDialog(this, "Sign up successful! You can now log in.");
+        jTextField3.setText("");
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jPasswordField1.setText("");
+    } else {
+        // Display error message if any of the fields are empty
+        JOptionPane.showMessageDialog(this, "All fields are required. Please fill in all the details.");
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
    
